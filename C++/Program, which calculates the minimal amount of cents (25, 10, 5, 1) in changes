@@ -1,0 +1,56 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+int main (void)
+{
+    float sum, cash, change;
+    do
+    cout << "Sum: " << endl;
+    while
+    (sum < 0);
+    cin >> sum;
+    do
+    cout << "Cash: " << endl;
+    while
+    (cash < 0);
+    cin >> cash;
+    do
+    change = (cash - sum);
+    while
+    (cash < sum);
+    cout << "Change: " << change << endl;
+ {   
+     change = change * 100;
+     int change1 = change + 0.5;
+     int i = 0;
+     while (i < change1 / 25)
+     {
+         i++;
+     }
+     cout << "Coin 25: " << i << endl;
+     int change2 = change1 - i * 25;
+     int j = 0;
+     while (j < change2 / 10)
+     {
+         j++;
+     }
+     cout << "Coin 10: " << j << endl;
+     int change3 = change2 - j * 10;
+     int k = 0;
+     if (change3 > 5)
+         while (k < change3 * 0.05)
+     {
+         k++;
+     }
+     cout << "Coin 5: " << k << endl;
+     int change4 = change3 - k * 5;
+     int l = 0;
+     while (l < change4 / 1)
+     {
+         l++;
+     }
+     cout << "Coin 1: " << l << endl;
+     int coins = i + j + k + l;
+     cout << "All coins: " << coins << endl;
+ }
+}

@@ -1,0 +1,48 @@
+#include <cctype>
+#include <cstdio>
+#include <string>
+#include <iostream>
+using namespace std;
+// Points assigned to each letter of the alphabet
+int POINTS[] = {1, 3, 3, 2, 1, 4, 2, 4, 1, 8, 5, 1, 3, 1, 1, 3, 10, 1, 1, 1, 1, 4, 4, 8, 4, 10};
+int main(void)
+{
+    string player_1, player_2;
+    int sum = 0, sum_2 = 0;
+    {
+    cout << "Player 1:" << endl;
+    cin >> player_1;
+    }
+        {
+        int n = player_1.size();
+        for (int i = 0; i < n; i++)
+        {
+            if ((char) player_1[i] > 97)
+        sum += POINTS [(char) player_1[i] - 97];
+        else
+        sum += POINTS [(char) player_1[i] - 65];
+        }
+        }
+    {
+    cout << "Player 2: " << endl;
+    cin >> player_2;
+    }
+    {
+        int x = player_2.size();
+        for (int j = 0; j < x; j++)
+        {
+            if ((char) player_2[j] > 97)
+            sum_2 += POINTS [(char) player_2[j] - 97];
+            else
+            sum_2 += POINTS [(char) player_2[j] - 65];
+        }
+    }
+    {
+        if (sum > sum_2)
+        cout << "Player 1 wins!" << endl;
+        else if (sum < sum_2)
+        cout << "Player 2 wins!" << endl;
+        else
+        cout << "Draw!" << endl;
+    }
+}

@@ -1,0 +1,43 @@
+// Example program
+#include <iostream>
+#include <string>
+#include <cctype>
+#include <cstdio>
+using namespace std;
+
+int main(int argc, char* argv[])
+{
+string text;
+cout << "Your text " << endl;
+getline (cin, text);
+int n = text.length();
+for (int i = 0; i < n * 2; i++)
+if ((char) text[i] == ' ' || (char) text[i] == '.' || (char) text[i] == '!' || (char) text[i] == '?' || (char) text[i] == ',' || (char) text[i] == 39)
+{
+    n--;
+}
+int words = 0;
+for (int j = 0; j < text.length(); j++)
+if ((char) text[j] == ' ')
+{
+    words++;
+}
+cout << "Words " << words + 1 << endl;
+float L = n / (float) words * 100;
+int sentence = 0;
+int x = text.length();
+for (int k = 0; k < x; k++)
+{
+    if ((char) text[k] == '.')
+    sentence++;
+    else if ((char) text[k] == '!')
+    sentence++;
+    else if ((char) text[k] == '?')
+    sentence++;
+}
+cout << "Sentence " << sentence << endl;
+float S = (float) sentence / words * 100;
+cout << S << endl << L << endl;
+int index = 0.0588 * L - 0.296 * S - 15.8;
+cout << "Grade: " << index << endl;
+}

@@ -1,0 +1,24 @@
+#include <iostream>
+#include <string>
+using namespace std;
+int main()
+{
+ string output, input;
+ int key;
+ cout << "Input: " << endl;
+ getline (cin, input);
+ cout << "Key: " << endl;
+ cin >> key;
+ int n = input.length();
+ for (int i = 0; i < n; i++)
+ if ((char) input [i] == 'z' || (char) input [i] == 'Z')
+ {
+     output = (char) input[i] - 26 + key;
+     cout << output;
+ }
+ else
+ {
+     output = (char) input[i] + key;
+     cout << output;
+ }
+}

@@ -1,0 +1,49 @@
+#include <iostream>
+#include <string>
+using namespace std;
+void shuffle(int* arr, int N)
+{
+    N = 26;
+    srand(time(0));
+    for (int i = 26 - 1; i >= 1; i--)
+    {
+        int j = rand() % (i + 1);
+ 
+        int tmp = arr[j];
+        arr[j] = arr[i];
+        arr[i] = tmp;
+    }
+}
+int main()
+{
+    string input;
+    cout << "Input: ";
+    cin >> input;
+{
+    int arr [26] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+    shuffle(arr, 26);
+    int n = input.length();
+    string x;
+    string output;
+    for (int i = 0; i < 26; i++)
+    {
+    x += (char) arr[i];
+    }
+    cout << "Key: " << x << endl;
+    cout << "Output: ";
+    for (int j = 0; j < n; j++)
+    {
+        if ((char) input[j] >= 97)
+    {
+    output = (char) x[(char) input[j] - 97];
+    }
+    else
+    {
+        output = (char) x[(char) input[j] - 65];
+    }
+    cout << output;
+    }
+    {
+    }
+}
+}

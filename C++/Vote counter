@@ -1,0 +1,96 @@
+#include <iostream>
+#include <string>
+#define MAX 9
+// Candidates have name and vote count
+typedef struct
+{
+    std::string name;
+    int votes;
+}
+candidate;
+
+// Array of candidates
+candidate candidates[MAX];
+// Number of candidates
+int candidate_count;
+
+// Function prototypes
+bool vote(std::string name);
+void print_winner(void);
+int main(int argc, char* argv[])    
+{
+    // Check for invalid usage
+    if (argc < 2)
+    {
+        std::cout << "Usage: plurality [candidate ...]" << std::endl;
+        return 1;
+    }
+
+    // Populate array of candidates
+    candidate_count = argc - 1;
+    if (candidate_count > MAX)
+    {
+        std::cout << "Maximum number of candidates is " << MAX;
+        return 2;
+    }
+    for (int i = 0; i < candidate_count; i++)
+    {
+        candidates[i].name = argv[i + 1];
+        candidates[i].votes = 0;
+    }
+    int voter_count;
+    std::cout << ("Number of voters: ") << std::endl;
+    std::cin >> voter_count;
+
+    // Loop over all voters
+    for (int i = 0; i < voter_count; i++)
+    {
+        std::string name;
+        std::cout << "Vote: " << std::endl;
+        std::cin >> name;
+
+        // Check for invalid vote
+        if (!vote(name))
+        {
+            std::cout << "Invalid vote.";
+        }
+    }
+
+    // Display winner of election
+    print_winner();
+}
+
+// Update vote totals given a new vote
+bool vote(std::string name)
+{
+    for (int i = 0; i < candidate_count; i++)
+    {
+    if (candidates[i].name == name)
+     {
+    candidates[i].votes++;
+    return true;
+     }
+    }
+    return false;
+}
+
+// Print the winner (or winners) of the election
+void print_winner(void)
+{
+    for (int i = 0; i < 1; i++)
+    {
+        if (candidates[i].votes > candidates[i + 1].votes)
+        {
+            std::cout << "Winner is: " << candidates[i].name << std::endl;
+        }
+        else if (candidates[i].votes == candidates[i + 1].votes)
+        {
+            std::cout << "Draw" << std::endl;
+        }
+        else
+        {
+            std::cout << "Winner is: " << candidates[i + 1].name << std::endl;
+        }
+    }
+    return;
+}
